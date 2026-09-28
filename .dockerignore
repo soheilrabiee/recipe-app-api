@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.docker
+.dockerignore
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environments
+.venv/
+venv/
+env/
+.env
+
+# Database
+*.sqlite3
