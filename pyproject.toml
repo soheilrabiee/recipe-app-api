@@ -1,0 +1,13 @@
+[tool.ruff]
+line-length = 120
+target-version = "py314"
+
+exclude = [
+    "migrations",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "W", "UP"]
