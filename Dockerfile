@@ -1,8 +1,9 @@
-FROM python:3.14-alpine
+FROM python:3.14.7-alpine3.24
 LABEL maintainer="Soheil"
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV RUFF_CACHE_DIR=/tmp/ruff_cache
 
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
@@ -23,7 +24,9 @@ RUN python -m venv /py && \
     adduser \
         --disabled-password \
         --no-create-home \
-        django-user
+        django-user && \
+    mkdir -p /tmp/ruff_cache && \
+    chown -R django-user:django-user /tmp/ruff_cache
 
 ENV PATH="/py/bin:$PATH"
 

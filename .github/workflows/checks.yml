@@ -6,7 +6,7 @@ on: [push]
 jobs:
     test-lint:
         name: Test and Lint
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-24.04
 
         steps:
             - name: Login to Docker Hub
@@ -16,7 +16,7 @@ jobs:
                   password: ${{secrets.DOCKERHUB_TOKEN}}
 
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
 
             - name: Test
               run: docker compose run --rm app python manage.py test
