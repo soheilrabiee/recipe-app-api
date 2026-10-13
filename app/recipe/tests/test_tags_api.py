@@ -10,7 +10,7 @@ from rest_framework.test import APITestCase
 from core.models import Tag
 from recipe.serializers import TagSerializer
 
-TAG_URL = reverse("recipe:tag-list")
+TAGS_URL = reverse("recipe:tag-list")
 
 
 def create_user(email="user@example.com", password="testpass123"):
@@ -25,5 +25,26 @@ class PublicTagsApiTests(APITestCase):
     def test_auth_required(self):
         """Test auth is required for retrieving tags."""
 
-        res = self.client.get(TAG_URL)
+        res = self.client.get(TAGS_URL)
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
+
+class PrivateTagsApiTests(APITestCase):
+    """Test authenticated API requests."""
+
+    def setUp(self):
+        self.user = create_user()
+        self.client.force_authenticate(self.user)
+
+    def test_retrieve_tags(self):
+        """Test retrieving a list of tags."""
+
+        Tag.objects.create(user=self.user, name="Vegan")
+        Tag.objects.create(user=self.user, name="Dessert")
+
+        res = self.client.get(TAGS_URL)
+
+        tags = Tag.objects.all().order_by("-name")
+        serializer = TagSerializer(tags, many=True)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.data, serializer.data)
