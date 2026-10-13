@@ -19,7 +19,7 @@ def create_recipe(user, **params):
     """Create and return a sample recipe."""
 
     defaults = {
-        "tile": "Sample recipe title",
+        "title": "Sample recipe title",
         "time_minute": 22,
         "price": Decimal("5.25"),
         "description": "Sample description",
