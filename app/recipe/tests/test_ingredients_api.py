@@ -3,7 +3,6 @@ Tests for the ingredients API.
 """
 
 from django.contrib.auth import get_user_model
-from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -20,7 +19,7 @@ def create_user(email="email@example.com", password="testpass123"):
     return get_user_model().objects.create_user(email=email, password=password)
 
 
-class PublicIngredientApiTests(TestCase):
+class PublicIngredientApiTests(APITestCase):
     """Test unauthenticated API requests."""
 
     def test_auth_required(self):
@@ -31,7 +30,7 @@ class PublicIngredientApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-class PrivateIngredientApiTests(TestCase):
+class PrivateIngredientApiTests(APITestCase):
     """Test unauthenticated API requests."""
 
     def setUp(self):
