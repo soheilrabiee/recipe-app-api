@@ -80,16 +80,19 @@ docker compose run --rm app sh -c "ruff check ."
 
 ```text
 recipe-app-api/
+├── .github/
+│   └── workflows/          # GitHub Actions CI workflows
 ├── app/
-|   ├── app/           # Django project configuration
-│   ├── core/          # Shared functionality and custom user model
-│   ├── user/          # User management and authentication
-│   ├── recipe/        # Recipe and related API endpoints
-│   └── manage.py
+│   ├── app/                 # Django project configuration
+│   ├── core/                # Shared functionality and custom user model
+│   ├── user/                # User management and authentication
+│   ├── recipe/              # Recipe and related API endpoints
+│   ├── manage.py
+│   └── pyproject.toml       # Ruff configuration
 ├── Dockerfile
 ├── compose.yml
-└── .github/
-    └── workflows/     # CI workflows
+├── requirements.txt         # Project dependencies
+└── requirements.dev.txt     # Development dependencies
 ```
 
 ## 💡 Key Concepts & Practices
