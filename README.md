@@ -81,7 +81,7 @@ docker compose run --rm app sh -c "ruff check ."
 ```text
 recipe-app-api/
 ├── .github/
-│   └── workflows/          # GitHub Actions CI workflows
+│   └── workflows/           # GitHub Actions CI workflows
 ├── app/
 │   ├── app/                 # Django project configuration
 │   ├── core/                # Shared functionality and custom user model
