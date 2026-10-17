@@ -30,7 +30,11 @@ RUN python -m venv /py && \
         --no-create-home \
         django-user && \
     mkdir -p /tmp/ruff_cache && \
-    chown -R django-user:django-user /tmp/ruff_cache
+    chown -R django-user:django-user /tmp/ruff_cache && \
+    mkdir -p /vol/web/media && \
+    mkdir -p /vol/web/static && \
+    chown -R django-user:django-user /vol && \
+    chmod -R 775 /vol
 
 ENV PATH="/py/bin:$PATH"
 
