@@ -1,4 +1,3 @@
-
 # Recipe App API
 
 A RESTful API for managing recipes, ingredients, tags, and user accounts, built with **Python, Django REST Framework, and PostgreSQL**.
@@ -9,25 +8,25 @@ A RESTful API for managing recipes, ingredients, tags, and user accounts, built 
 - **Recipe Management** — Create, retrieve, update, and delete recipes.
 - **Ingredients & Tags** — Associate ingredients and reusable tags with recipes.
 - **Authentication & Permissions** — Protect endpoints and restrict access to user-owned resources.
-- **Filtering** — Filter recipe attributes and retrieve relevant data.
+- **Filtering** — Filter recipes and retrieve relevant recipe attributes.
 - **Image Uploads** — Upload images for individual recipes.
 - **API Documentation** — Generate an OpenAPI schema and interactive API documentation.
-- **Automated Testing** — Test endpoints, authentication, permissions, and application behavior.
-- **Continuous Integration** — Automate tests and code quality checks with GitHub Actions.
+- **Automated Testing** — Test API endpoints, authentication, permissions, and application behavior.
+- **Continuous Integration** — Run automated tests and code quality checks with GitHub Actions.
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| Python | Programming language |
-| Django | Web framework |
-| Django REST Framework | REST API development |
-| PostgreSQL | Relational database |
-| Docker & Docker Compose | Containerized development |
+| Technology                | Purpose                      |
+| ------------------------- | ---------------------------- |
+| Python                    | Programming language         |
+| Django                    | Web framework                |
+| Django REST Framework     | REST API development         |
+| PostgreSQL                | Relational database          |
+| Docker & Docker Compose   | Containerized development    |
 | drf-spectacular & OpenAPI | API schema and documentation |
-| Django Test Framework | Automated testing |
-| Ruff | Linting and code quality |
-| GitHub Actions | Continuous integration |
+| Django Test Framework     | Automated testing            |
+| Ruff                      | Linting and code quality     |
+| GitHub Actions            | Continuous integration       |
 
 ## 🚀 Getting Started
 
@@ -53,14 +52,13 @@ docker compose up --build
 
 **3. Access the API**
 
-Open `http://localhost:8000/` in your browser or API client.
+Once the containers have started, access the application at:
 
-### 📖 API Documentation
+- API root: http://localhost:8000/
+- Swagger UI: http://localhost:8000/api/docs/
+- OpenAPI schema: http://localhost:8000/api/schema/
 
-The project uses **drf-spectacular** to generate an OpenAPI schema and provide interactive API documentation.
-
-- **Swagger UI:** http://localhost:8000/api/docs/
-- **OpenAPI Schema:** http://localhost:8000/api/schema/
+The application runs locally using the Docker Compose development configuration.
 
 ## 🧪 Running Tests
 
@@ -89,8 +87,12 @@ recipe-app-api/
 │   ├── recipe/              # Recipe and related API endpoints
 │   ├── manage.py
 │   └── pyproject.toml       # Ruff configuration
+├── proxy/                   # Nginx reverse proxy configuration
+├── scripts/                 # Application startup and utility scripts
 ├── Dockerfile
-├── compose.yml
+├── compose.yml              # Development configuration
+├── compose.production.yml   # Production-style configuration
+├── .env.sample              # Sample environment variables
 ├── requirements.txt         # Project dependencies
 └── requirements.dev.txt     # Development dependencies
 ```
@@ -103,8 +105,10 @@ recipe-app-api/
 - Authentication, permissions, and user-specific querysets
 - Automated testing and test-driven development
 - Docker-based development workflows
+- Production-style configuration with uWSGI and Nginx
+- Environment-based configuration
 - Continuous integration and code quality checks
 
----
+## Purpose
 
-**Purpose:** A hands-on project focused on building reliable REST APIs and developing practical Django backend engineering skills.
+A hands-on project focused on building reliable REST APIs and developing practical Django backend engineering skills.
